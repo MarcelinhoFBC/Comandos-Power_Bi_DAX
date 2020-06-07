@@ -1,0 +1,10 @@
+## Para criar o mapa do Brasil ##
+
+## Precisamos de uma planilha com os seguintes campos: UF (Extenso), UF (Resumida),Região, Chave para relacionar com a 
+## Devemos ter uma tabela com as chaves que irão se relacionar com a chave para "pintar" o mapa
+
+## Clicar em "Mapa Coroplético", se não estiver disponíevl clicar nos três pontos "obter mais visuais" e procurar este visual
+
+## Depois de criar o visual arrastar o campo da tabela de estados "[UF(extenso)]" para o campo do gráfico "localização"
+## Para colorir o mapa, selecionar a tabela onde estão as chaves e arrastar para o campo "legenda"
+## Saturação da Cor, devemos colocar o valor da soma de nosso interesse

@@ -1,0 +1,38 @@
+# Extrair texto:
+	MID([Coluna de onde se deseja extrair os dados],Caracter de início,Qtd de caracteres)
+	LEFT([Coluna que se deseja extarir o texto],Quantidade de caracterer)
+	RIGHT ([Coluna que se deseja extarir o texto],Quantidade de caracterer)
+
+# Indice & Corresp:
+	LOOKUPVALUE(Valor que quero que retorne,Coluna de referência,Valor que quero procurar)
+
+# Criar uma linha no gráfico com valor fixo
+# Criar uma medida com a informação que se deseja, exemplo: supomos que queira colocar 30 unidades como limite.
+# Na aba "Página Incial", clicar em "Nova medida" e digitar a informação abaixo:
+	Unid_Max = 30
+
+# Contar a quantidade de itens "cont.se" para todos os itens
+# Criar uma medida com a informação que se deseja, exemplo: Contar quantos itens estão em atraso e dividir
+# Na aba "Página Incial", clicar em "Nova medida" e digitar a informação abaixo:
+
+	% Atrasado = CALCULATE(COUNTROWS(Tabela de interesse),'Tabela'[Coluna de ref]="Atrasado")/(CALCULATE(COUNTROWS(Tabela de interesse),'Tabela'[Coluna de ref]="No Prazo")+CALCULATE(COUNTROWS(Tabela de interesse),'Tabela'[Coluna de ref]="Atrasado")
+
+# Tirar a média de uma coluna
+# Criar uma medida com a informação que se deseja
+# Na aba "Página Incial", clicar em "Nova medida" e digitar a informação abaixo:
+	Med_Dias_Aberto = AVERAGE(Tabela[coluna que se deseja tirar a média])
+
+# "Cont.se" por item
+	Cont_Estoque = CALCULATE(COUNTROWS(Tabela Matriz),FILTER(Tabela Matriz,Tabela Matriz[Coluna REF]="Critério")
+
+# Criar Tabela sem duplicidade
+# Dar carga da base de dados, certficando que o dado de referencia está padronizado
+# Criar uma nova tabela, na aba "Página Inicial" clicar no ícone "Nova Tabela", utilizando a fórmula abaixo:
+
+	PK_S_Duplicidade = CALCULATETABLE(SUMMARIZE(Tabela matriz,'Tabela Matriz'[Coluna referência]),'Tabela matriz'[Coluna validação]="Critério")
+
+Soma.se
+# Na aba "Página Incial", clicar em "Nova medida" e digitar a informação abaixo:
+	Soma = SUMX(
+	FILTER(Tabela,Campo de filtro = "Critério"),
+	[Campo de soma])

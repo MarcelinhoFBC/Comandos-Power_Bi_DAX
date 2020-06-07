@@ -1,0 +1,88 @@
+# ** Para fazer cálculo com data precisamos criar uma tabela com as datas **
+
+**** Criar Uma tabela com a relação dos feriados ****
+# Criar uma planilha com dois Campos "Data do Feriado" e a outro o nome do feriado e importa para o projeto
+
+**** Criar Uma tabela com a relação dos dias do período desejado ****
+
+# Clicar na aba "Ferramentas da Tabela" e depois em "Nova Tabela"
+# Ao criar colocar o nome do campo de "CalendarioDax" com a fórmula abaixo:
+	CALENDAR(DATE(ano de início,mês de início,dia de início),DATE(ano fim,mês fim,dia fim))
+
+# Depois de impotar a tabela de feriados e criar a tabela com as datas, clicar no menu lateral "relacionamento de tabelas" e relacionar o campo "data" da tabela CalendarioDax com a "data" da tabela de feriados
+
+# Volta na tabela "CalendarioDax" e continua o processo de elaboração da base
+
+# Extrair dia: 
+	Dia = DAY([Coluna onde está a data Ref.])
+
+# Extrair Ano: 
+	YEAR = DAY([Coluna onde está a data Ref.])
+
+# Identificar o nome do dia da semana: 
+	DiaSemana = FORMAT ([Coluna onde está a data Ref],"ddd")
+
+# Identificar o nome do mês: 
+	MêsNome = FORMAT ([Coluna onde está a data Ref],"mmm")
+
+# Identificar o número do dia da semana: 
+	NDia = WEEKDAY([Coluna onde está a data Ref])
+
+# Identificar quais as data que possuem feriado: 
+	Feriado = RELATED(Tabela de feriados[Campo com o nome do feriado])
+
+# Classificar se o dia é útil ou feriado ou final de semana digitando a fórmula abaixo
+	Classif_Dia = IF([Coluna Feriado]<>BLANK(),0,IF([Coluna NDia]=1,0,IF([Coluna NDia]=7,0,1)))
+
+# Somar a coluna de "Classif_Dia":
+	Contagem Acc Dias úteis = 
+	var DataAtual = CalendarioDax[Coluna de data]
+	return
+	CALCULATE(
+	SUM([Coluna Classif_DIA]),
+	FILTER(
+	ALL(CalendarioDAX),
+	CalendarioDAX[Coluna de data] <= DataAtual
+	)
+	)
+
+# Somar quantidade de dias, a uma data, para descobrir a data final
+	DeadLine = 
+	var ContDtAtual = LOOKUPVALUE(Tabela calendario[Coluna com a soma dos dias acumulados],coluna de referência,Valor que quero procurar)
+	return
+	CALCULATE(
+	MIN(CalendarioDax[Coluna de data]),
+	FILTER(
+	ALL(CalendarioDAX),
+	Tabela calendario[Coluna com a soma dos dias acumulados] = ContDtAtual + Tabela com a relação de dias por chave [coluna de dias]
+	)
+	)
+
+# Somar a quantidade de dias úteis entre duas datas
+	CALCULATE(SUM(CalendarioDAX[Classif_Dia]),DATESBETWEEN(CalendarioDax[coluna de data],Data incial,Data final)
+
+# Localizar a maior data de vencimento:
+	Max_Dt = 
+	var N_Processo = Tabela de receberá a informação[coluna com a chave de busca]
+	return
+	CALCULATE(
+	MAX(Tabela com a relação das datas que se deseja fazer a busca[Coluna com as datas de interesse]),
+	FILTER(tabela com a relação das datas que se deseja fazer a busca,[coluna na tabela, onde estão as chaves que se deseja \
+	fazer a busca, tabela matriz] = N_Processo
+
+# Organizar as datas para aprecer ordenado nos relatórios (gráfico)
+# Criar uma coluna para extrair o mês da data de interesse
+	Mês_Ref = MONTH(tabela com a data de interesse [Coluna com a data de interesse])
+
+# Após a criar esta coluna, criar outra coluna para prepar os dados para o relatório
+	Filtro_Mês = IF([Mês_Ref]=BLANK(),BLANK(),MID("xxxxx01-Jan02-Fev03-Mar04-Abr05-Mai06-Jun07-Jul08-Ago09-Set10-Out11-Nov12-Dez",[Mês_Ref]*6,6))	
+
+
+
+
+
+
+
+
+
+
