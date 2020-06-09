@@ -1,0 +1,33 @@
+ Criar Tabela sem duplicidade
+
+# Dar carga da base de dados, certficando que o dado de referencia está padronizado
+# Criar uma nova tabela, na aba "Página Inicial" clicar no ícone "Nova Tabela", utilizando a fórmula abaixo:
+
+	PK_S_Duplicidade = CALCULATETABLE(SUMMARIZE(Tabela matriz,'Tabela Matriz'[Coluna referência]),'Tabela matriz'[Coluna validação]="Critério")
+
+# Somar o valor por chave, sem a duplicidade
+	Valor_Corrente = SUMX(FILTER(Tabela,Tabela[Campo de critério]="Critério"),Tabela[Campo de soma])
+
+# Somar o valor total da tabela base
+	Vlr_Global_Corrente = SUM(Tabela[Campo com os valores para soma])
+
+# Criar uma nova tabela, na aba "Página Inicial" clicar no ícone "Nova Tabela" (Não precisa de formula)
+# Criar uma medida com a soma do valor total da tabela base (sem duplicidade)
+# Criar uma medida com a informação que se deseja
+	Vlr_Global_Corrente = SUM(Tabela[Campo com os valores para soma])
+	
+# Identificar o percentual (%) de representação do valor individual em relação ao total:
+	(%) Rep_Fat = DIVIDE(Tabela[Valor_Corrente],Tabela[Vlr_Global_Corrente])
+
+# Criar uma planilha de ranking
+	Ranking = RANKX(ALLSELECTED(Tabela de onde deve ser imputado o resultado),Tabela de Medidas[Vlr_Global_Corrente])
+
+# Somar o valor acumulado:	
+	Acumulado_ABC = 
+	var RNK = Tabela[Ranking]
+	return
+	CALCULATE(SUM(Tabela[(%) Rep_Fat]),
+	FILTER(Tabela Referência,Tabela Referência[Ranking]<=RNK))
+	
+# Criar uma coluna de calssificação ABC
+	Classif_ABC = IF(Tabela[Acumulado_ABC]<=DIVIDE(80,100),"AAA",IF(Tabela[Acumulado_ABC]<=DIVIDE(95,100),"AA","A"))			
