@@ -26,7 +26,7 @@
 	Cont_Estoque = CALCULATE(COUNTROWS(Tabela Matriz),FILTER(Tabela Matriz,Tabela Matriz[Coluna REF]="Critério")
 	
 # Ajustar data para relatório:
-	Filtro_Mês = MID("xxxxx01-Jan02-Fev03-Mar04-Abr05-Mai06-Jun07-Jul08-Ago09-Set10-Out11-Nov12-Dez",'Tabela'[Data completa]*6,6)
+	Filtro_Mês = MID("xxxxx01-Jan02-Fev03-Mar04-Abr05-Mai06-Jun07-Jul08-Ago09-Set10-Out11-Nov12-Dez",MONTH('Tabela'[Data Abreviada])*6,6)
 
 # Criar Tabela sem duplicidade
 # Dar carga da base de dados, certficando que o dado de referencia está padronizado
