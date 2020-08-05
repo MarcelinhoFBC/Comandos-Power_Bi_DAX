@@ -6,7 +6,7 @@ Proceder com a seguinte alteração ni link.
 Link Original (Publicar na Web)
 https://docs.google.com/spreadsheets/d/1p4K7rgMR7strInV_bRoZTShTAgpySI3j51cwcBHDMcQ/edit?usp=sharing
 
-Alterar o final "edit?usp=sharing" para " export?format=xlsx&id=nome_da_planilha"
+Alterar o final "edit?usp=sharing" para " export?xlsx
 Obs: o nome da da planilha, no endereço, depois de "/d/" até "/edit?"
 
-https://docs.google.com/spreadsheets/d/1p4K7rgMR7strInV_bRoZTShTAgpySI3j51cwcBHDMcQ/export?format=xlsx&id=1p4K7rgMR7strInV_bRoZTShTAgpySI3j51cwcBHDMcQ
+https://docs.google.com/spreadsheets/d/1p4K7rgMR7strInV_bRoZTShTAgpySI3j51cwcBHDMcQ/export?xlsx
