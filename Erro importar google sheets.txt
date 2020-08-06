@@ -1,12 +1,9 @@
 Quando der erro ao tentar trazer o google planilha falando "anonima" Realizar o seguinte processo
+Do lado direito superior, clicar em "Compartilhar" e depois copiar o link. deixar como público.
 
-Depois de compartilhar (Para qualquer pessoa com o link) e publicar na web (Arquivo > Publicar na Web)
-Proceder com a seguinte alteração ni link.
-
-Link Original (Publicar na Web)
+Link Original
 https://docs.google.com/spreadsheets/d/1p4K7rgMR7strInV_bRoZTShTAgpySI3j51cwcBHDMcQ/edit?usp=sharing
 
-Alterar o final "edit?usp=sharing" para " export?xlsx
-Obs: o nome da da planilha, no endereço, depois de "/d/" até "/edit?"
+Alterar o final "edit?usp=sharing" para "export?xlsx
 
 https://docs.google.com/spreadsheets/d/1p4K7rgMR7strInV_bRoZTShTAgpySI3j51cwcBHDMcQ/export?xlsx
